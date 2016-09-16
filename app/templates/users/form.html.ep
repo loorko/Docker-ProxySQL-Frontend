@@ -40,45 +40,6 @@
 											% }
 										</div>
 									</div>
-									<div class="col-xs-6">
-										<div class="form-group">
-											<label class="text-semibold"><%= l 'Code:' %></label>
-											<input class="form-control" type="text" name="code" value="<%= param('code') %>">
-										</div>
-									</div>
-								</div>
-								<!-- .row -->
-								<div class="row">
-									<div class="col-xs-6">
-										<div class="form-group">
-											<label class="text-semibold"><%= l 'Quantity:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" name="quantity" type="text" value="<%= ( param('quantity') ) ? param('quantity') : 1 %>">
-										</div>
-									</div>
-								</div>
-								<!-- .row -->	
-								<div class="row">
-									<div class="col-xs-6">
-										<div class="form-group">
-											<label class="text-semibold"><%= l 'Number of beds:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" name="head" type="text" value="<%= ( param('head') ) ? param('head') : 1 %>">
-										</div>
-									</div>
-									<div class="col-xs-6">
-										<div class="form-group">
-											<label class="text-semibold"><%= l 'Number of extra beds:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" name="trundle_bed" type="text" value="<%= ( param('trundle_bed') ) ? param('trundle_bed') : 0 %>">
-										</div>
-									</div>
-								</div>
-								<!-- .row -->
-								<div class="row">
-									<div class="col-xs-12">
-										<div class="form-group">
-											<label class="text-semibold"><%= l 'Description:' %></label>
-											<textarea class="form-control" name="description" placeholder="<%= l 'Room type description ...' %>" rows="5"><%= ( param('description') ) ? param('description') : '' %></textarea>
-										</div>
-									</div>
 								</div>
 								<!-- .row -->
 								<div class="text-right">
@@ -92,19 +53,3 @@
 					
 				</div>
 				<!-- .content -->
-				
-				<script type="text/javascript" src="../assets/js/plugins/forms/inputs/touchspin.min.js"></script>
-				<script>
-            $("input[name='quantity'], input[name='trundle_bed']").TouchSpin({
-                min: 0,
-                max: 100,
-                step: 1,
-                postfix: '<%= l 'pieces' %>'
-            });
-            $("input[name='head']").TouchSpin({
-                min: 0,
-                max: 100,
-                step: 1,
-                postfix: '<%= l 'head' %>'
-            });
-        </script>
