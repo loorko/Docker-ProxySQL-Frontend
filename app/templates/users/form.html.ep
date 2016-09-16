@@ -1,0 +1,110 @@
+% use utf8;
+% layout 'system';
+% title l 'Create new user';
+
+				<!-- Page header -->
+				<div class="page-header page-header-default">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4>
+								<i class="icon-arrow-left52 position-left"></i>
+								<span class="text-semibold"><%=l 'Users' %></span> / <%=l 'New user' %>
+							</h4>
+						</div>
+						<div class="heading-elements">
+							<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/users"><%=l 'cancel' %><b><i class="icon-x"></i></b></a>
+						</div>
+					</div>
+				</div>
+				<!-- /page header -->
+
+				<!-- content -->
+				<div class="content">
+	
+					<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h5 class="panel-title"><%=l 'User data' %></h5>
+						</div>
+						<div class="panel-body">
+							<form action="/user" method="post">
+								<div class="row">
+									<div class="col-xs-6">
+										<div class="form-group<%= ( validation->error('username') ) ? ' has-error' : '' %>">
+											<label class="control-label text-semibold"><%= l 'Username:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" type="text" name="username" value="<%= param('username') %>">
+											% if (my $err = validation->error('username')) {
+											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
+											% }
+											% unless (my $err = validation->error('username')) {
+											<span class="help-block"><%=l 'maximum 30 character' %></span>
+											% }
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label class="text-semibold"><%= l 'Code:' %></label>
+											<input class="form-control" type="text" name="code" value="<%= param('code') %>">
+										</div>
+									</div>
+								</div>
+								<!-- .row -->
+								<div class="row">
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label class="text-semibold"><%= l 'Quantity:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" name="quantity" type="text" value="<%= ( param('quantity') ) ? param('quantity') : 1 %>">
+										</div>
+									</div>
+								</div>
+								<!-- .row -->	
+								<div class="row">
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label class="text-semibold"><%= l 'Number of beds:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" name="head" type="text" value="<%= ( param('head') ) ? param('head') : 1 %>">
+										</div>
+									</div>
+									<div class="col-xs-6">
+										<div class="form-group">
+											<label class="text-semibold"><%= l 'Number of extra beds:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" name="trundle_bed" type="text" value="<%= ( param('trundle_bed') ) ? param('trundle_bed') : 0 %>">
+										</div>
+									</div>
+								</div>
+								<!-- .row -->
+								<div class="row">
+									<div class="col-xs-12">
+										<div class="form-group">
+											<label class="text-semibold"><%= l 'Description:' %></label>
+											<textarea class="form-control" name="description" placeholder="<%= l 'Room type description ...' %>" rows="5"><%= ( param('description') ) ? param('description') : '' %></textarea>
+										</div>
+									</div>
+								</div>
+								<!-- .row -->
+								<div class="text-right">
+									<button class="btn btn-primary legitRipple" type="submit"><%=l 'save' %><i class="icon-arrow-right14 position-right"></i></button>
+								</div>
+							</form>
+						</div>
+						<!-- .panel-body -->
+					</div>
+					<!-- .panel -->
+					
+				</div>
+				<!-- .content -->
+				
+				<script type="text/javascript" src="../assets/js/plugins/forms/inputs/touchspin.min.js"></script>
+				<script>
+            $("input[name='quantity'], input[name='trundle_bed']").TouchSpin({
+                min: 0,
+                max: 100,
+                step: 1,
+                postfix: '<%= l 'pieces' %>'
+            });
+            $("input[name='head']").TouchSpin({
+                min: 0,
+                max: 100,
+                step: 1,
+                postfix: '<%= l 'head' %>'
+            });
+        </script>

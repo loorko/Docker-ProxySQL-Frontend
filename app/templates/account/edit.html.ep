@@ -1,0 +1,241 @@
+% layout 'system';
+% title 'Szálláshely adatainak szerkesztése';
+
+				<!-- Page header -->
+				<div class="page-header page-header-default">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold">Szálláshely</span> / Szálláshely adatainak szerkesztése</h4>
+						</div>
+						<div class="heading-elements">
+							<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/account">Mégsem<b><i class="icon-x"></i></b></a>
+						</div>
+					</div>
+				</div>
+				<!-- /page header -->
+
+				<!-- content -->
+				<div class="content">
+
+					<div class="row">
+						
+						<div class="col-md-6">
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h5 class="panel-title">Szálláshely adatai</h5>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group">
+												<label class="text-semibold">Szálláshely neve:</label>
+												<input class="form-control" type="text" value="Morning Star Motel">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Város:</label>
+												<input class="form-control" type="text" value="Eger">
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Irányítószám:</label>
+												<input class="form-control" type="text" value="3300">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->	
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Címsor 1:</label>
+												<input class="form-control" type="text" value="H-3300, Eger">
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Címsor 2:</label>
+												<input class="form-control" type="text" value="Szálloda utca 123.">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Telefon:</label>
+												<input class="form-control" type="text" value="+36 36 321-645">
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Email:</label>
+												<input class="form-control" type="text" value="info@morning-star-motel.hu">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Webhely:</label>
+												<input class="form-control" type="text" value="www.morning-star-motel.hu">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+								</div>
+								<!-- .panel-body -->
+							</div>
+							<!-- .panel -->
+						</div>
+						<!-- .col -->
+						
+						<div class="col-md-6">
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h5 class="panel-title">Szálláshely számlázási adatai</h5>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group">
+												<label class="text-semibold">Számlázási név:</label>
+												<input class="form-control" type="text" value="Morning Star Motel Kft.">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Város:</label>
+												<input class="form-control" type="text" value="Eger">
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Irányítószám:</label>
+												<input class="form-control" type="text" value="3300">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->	
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Címsor 1:</label>
+												<input class="form-control" type="text" value="H-3300, Eger">
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Címsor 2:</label>
+												<input class="form-control" type="text" value="Szálloda utca 123.">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Telefon:</label>
+												<input class="form-control" type="text" value="+36 36 321-645">
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Email:</label>
+												<input class="form-control" type="text" value="szamla@morning-star-motel.hu">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold">Webhely:</label>
+												<input class="form-control" type="text" value="www.morning-star-motel.hu">
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+								</div>
+								<!-- .panel-body -->
+							</div>
+							<!-- .panel -->
+						</div>
+						<!-- .col -->
+					</div>
+					<!-- .row -->
+					
+					<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h5 class="panel-title">Képek</h5>
+							<div class="heading-elements">
+								<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/account/add_image">Új kép hozzáadása<b><i class="icon-upload"></i></b></a>
+							</div>
+						</div>
+						<div class="panel-body">
+							<div class="row">
+
+								<div class="col-lg-3">
+									<div class="thumbnail">
+										<img alt="" class="img-rounded" src="../assets/images/placeholder.jpg">
+										<div class="caption">
+											<h3>The Hotel</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lobortis libero quis elit facilisis auctor. Sed aliquam est egestas faucibus pretium. Donec hendrerit ante non cursus rutrum.</p>
+											<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/account">Törlés<b><i class="icon-trash"></i></b></a>
+										</div>
+									</div>
+								</div>
+								<!-- .col -->
+								
+								<div class="col-lg-3">
+									<div class="thumbnail">
+										<img alt="" class="img-rounded" src="../assets/images/placeholder.jpg">
+										<div class="caption">
+											<h3>The Room</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lobortis libero quis elit facilisis auctor.</p>
+											<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/account">Törlés<b><i class="icon-trash"></i></b></a>
+										</div>
+									</div>
+								</div>
+								<!-- .col -->
+
+								<div class="col-lg-3">
+									<div class="thumbnail">
+										<img alt="" class="img-rounded" src="../assets/images/placeholder.jpg">
+										<div class="caption">
+											<h3>The Pool</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+											<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/account">Törlés<b><i class="icon-trash"></i></b></a>
+										</div>
+									</div>
+								</div>
+								<!-- .col -->
+								
+								<div class="col-lg-3">
+									<div class="thumbnail">
+										<img alt="" class="img-rounded" src="../assets/images/placeholder.jpg">
+										<div class="caption">
+											<h3>The Garden</h3>
+											<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla lobortis libero quis elit facilisis auctor.</p>
+											<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/account">Törlés<b><i class="icon-trash"></i></b></a>
+										</div>
+									</div>
+								</div>
+								<!-- .col -->
+								
+							</div>
+							<!-- .row -->
+						</div>
+						<!-- panel-body -->
+					</div>
+					<!-- panel -->					
+				</div>
+				<!-- .content -->

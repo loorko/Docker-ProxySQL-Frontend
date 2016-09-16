@@ -1,0 +1,26 @@
+					<div class="sidebar-category sidebar-category-visible">
+						<div class="category-content no-padding">
+							<ul class="navigation navigation-main navigation-accordion">
+							% for my $loop ( @{$menu} ) {
+								<li <%= ( $loop->{action} and ( $controller eq $loop->{action} ) ) ? ' class=active' : '' %> >
+									<a href="<%= $loop->{action} %>" <%= ( $loop->{submenu} ) ? 'class=has-ul' : '' %>>
+										<i class="fa fa-<%= $loop->{icon} %>"></i>
+										<span><%= l $loop->{name} %></span>
+									</a>
+									% if ( my $submenu = $loop->{submenu} ) {
+									<ul>
+										% for my $sub_loop ( @{$submenu} ) {
+										<li <%= ( $sub_loop->{action} and ( $controller eq $sub_loop->{action} ) ) ? ' class=active' : '' %> >
+											<a href="/<%= $sub_loop->{action} %>" <%= ( $sub_loop->{submenu} ) ? 'class=has-ul' : '' %>>
+												<i class="fa fa-<%= $sub_loop->{icon} %>"></i>
+												<span><%= l $sub_loop->{name} %></span>
+											</a>
+										</li>
+										% }
+									</ul>
+									% }
+								</li>
+							% }
+							</ul>
+						</div>
+					</div>

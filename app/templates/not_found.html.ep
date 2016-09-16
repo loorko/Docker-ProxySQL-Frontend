@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Roland Goreczky">
+    <title><%=l 'Page not found' %></title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="../css/system/system.css" rel="stylesheet">
+    <!-- Custom Fonts -->
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="../js/plugins/html5shiv.js"></script>
+      <script src="../js/plugins/respond-1.1.0.min.js"></script>
+    <![endif]-->
+	</head>
+  <body>
+		<div class="container">
+			<div class="jumbotron">
+				<div class="row">
+					<h1 class="text-center">404</h1>
+					<h2 class="text-center"><%=l 'Page not found' %></h2>
+					<p class="text-center">
+					The page you requested could not be found, either contact your webmaster or try again. <br>
+					Use your browsers Back button to navigate to the page you have prevously come from <br>
+					Or you could just press this neat little button:
+					</p>
+				</div>
+				<div class="row">
+					<div class="col-md-offset-5 col-md-2">
+						 <a class="btn btn-info btn-block" href="/">Home</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
