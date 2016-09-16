@@ -1,7 +1,7 @@
 Docker-ProxySQL-Frontend
 ========================
 
-![ProxySQL Frontned](/images/docker-proxysq-frontend.png)
+![ProxySQL Frontned](/images/docker-proxysql-frontend.png)
 
 ## Install
 Prerequisities
