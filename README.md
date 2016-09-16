@@ -20,7 +20,7 @@ proxysql-frontend   latest              fb3f76a8ff51        5 seconds ago       
 
 To initialy run:
 ```
-$ docker run -p 8080 -t -i --name proxysql-frontend proxysql-frontend
+$ docker run -p 8080:8080 -t -i --name proxysql-frontend proxysql-frontend
 ```
 Get the container Ip Address:
 ```
