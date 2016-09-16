@@ -3,21 +3,36 @@ use utf8;
 use Mojo::Base 'App::I18N';
 our %Lexicon = (
 	'Page not found' => 'Odal nem található',
-	yes 		=> 'Igen',
-	no 			=> 'Nem',
-	cancel 	    => 'Mégsem',
-	save 		=> 'Mentés',
+	'Yes' 		=> 'Igen',
+	'No' 	    => 'Nem',
+	'Cancel' 	=> 'Mégsem',
 	'List'		=> 'Listázás',
     'Actions'   => 'Műveletek',
+    'View'      => 'Megtekintés',
     'Edit'      => 'Szerkesztés',
+	'Save' 		=> 'Mentés',
     'Delete'    => 'Törlés',
     
-    'Settings'          => 'Beállítások',
-    'Company settings'  => 'Fiók beállításai',
-    'Software settings' => 'Szoftver beállításai',
+    # Menu
+    'Settings'              => 'Beállítások',
+        'Global settings'   => 'Globális beállítások',
+        'Software settings' => 'Szoftver beállításai',
+    'Dashboard'             => 'Áttekintés',
+    'Users'                 => 'Felhasználók',
     
-    'Dashboard'     => 'Áttekintés',
-    'Users'         => 'Felhasználók',
+    # Company panel
+    'Company data'  => 'Cég adatai',
+        'Company name:'     => 'Cég neve',
+        'Company address:'  => 'Cég címe:',
+        'Company logo url:' => 'Cég logójának URL-je:',
+    
+    'ProxySQL data' => 'ProxySQL adatai',
+        'ProxySQL host:'    => 'ProxySQL host:',
+        'ProxySQL port:'    => 'ProxySQL port:',
+        'ProxySQL user:'    => 'ProxySQL felhasználó:',
+        'ProxySQL password:'=> 'ProxySQL jelszó:',
+    'Edit ProxySQL data'    => 'ProxySQL adatainak módosítása',
+    
     # MySQL Servers panel
     'MySQL Servers' => 'MySQL Szerverek',
     'Hostgroup id'  => 'Hostgroup id',
@@ -39,7 +54,9 @@ our %Lexicon = (
     'User data'         => 'Felhasználó adatai',
     'Username:'         => 'Felhasználónév:',
 	# Form validator
-	form_error_required => 'Kötelezőmező üresen maradt',
-	form_error_size 	=> 'Túl hosszú',
+	form_error_required             => 'Kötelezőmező üresen maradt',
+	form_error_size 	            => 'Túl hosszú',
+    form_error_invalid_host_address => 'Nem megfelelő host cím',
+    form_error_invalid_port         => 'Nem megfelelő port'
 );
 1;

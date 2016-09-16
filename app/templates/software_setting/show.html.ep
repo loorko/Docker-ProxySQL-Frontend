@@ -1,0 +1,113 @@
+% layout 'system';
+% title l 'Software settings';
+
+				<!-- Page header -->
+				<div class="page-header page-header-default">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4>
+								<i class="icon-arrow-left52 position-left"></i>
+								<span class="text-semibold"><%= l 'Software settings' %></span> / <%= l 'View' %>
+							</h4>
+						</div>
+					</div>
+				</div>
+				<!-- /page header -->
+
+				<!-- content -->
+				<div class="content">
+
+					<div class="row">
+						
+						<div class="col-md-6">
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h5 class="panel-title"><%= l 'Company data' %></h5>
+								</div>
+								<div class="panel-body">
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="form-group">
+												<label class="text-semibold"><%= l 'Company name:' %></label>
+												<div class="form-control-static"><%= $config->{company}{name} %></div>
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold"><%= l 'Company address:' %></label>
+												<div class="form-control-static"><%= $config->{company}{address} %></div>
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold"><%= 'Company logo url:' %></label>
+												<div class="form-control-static"><%= $config->{company}{logo_url} %></div>
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<a class="btn btn-primary btn-labeled btn-labeled-right pull-right legitRipple" href="/software_setting/company/edit">
+										<%=l 'Edit' %>
+										<b><i class="icon-pencil7"></i></b>
+									</a>
+								</div>
+								<!-- .panel-body -->
+							</div>
+							<!-- .panel -->
+						</div>
+						<!-- .col -->
+						
+						<div class="col-md-6">
+							<div class="panel panel-flat">
+								<div class="panel-heading">
+									<h5 class="panel-title"><%= l 'ProxySQL data' %></h5>
+								</div>
+								<div class="panel-body">
+									<!-- .row -->
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold"><%= l 'ProxySQL host:' %></label>
+												<div class="form-control-static"><%= $config->{database}{host} %></div>
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold"><%= l 'ProxySQL port:' %></label>
+												<div class="form-control-static"><%= $config->{database}{port} %></div>
+											</div>
+										</div>
+									</div>
+									<!-- .row -->	
+									<div class="row">
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold"><%= l 'ProxySQL user:' %></label>
+												<div class="form-control-static"><%= $config->{database}{user} %></div>
+											</div>
+										</div>
+										<div class="col-xs-6">
+											<div class="form-group">
+												<label class="text-semibold"><%= l 'ProxySQL password:' %></label>
+												<div class="form-control-static"><%= $config->{database}{pass} %></div>
+											</div>
+										</div>
+									</div>
+									<!-- .row -->
+									<a class="btn btn-primary btn-labeled btn-labeled-right pull-right legitRipple" href="/software_setting/proxysql/edit">
+										<%=l 'Edit' %>
+										<b><i class="icon-pencil7"></i></b>
+									</a>
+								</div>
+								<!-- .panel-body -->
+							</div>
+							<!-- .panel -->
+						</div>
+						<!-- .col -->
+					</div>
+					<!-- .row -->
+				</div>
+				<!-- .content -->

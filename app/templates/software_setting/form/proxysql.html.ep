@@ -1,0 +1,103 @@
+% use utf8;
+% layout 'system';
+% title l 'Software settings' ." / ". l 'Edit ProxySQL data';
+
+				<!-- Page header -->
+				<div class="page-header page-header-default">
+					<div class="page-header-content">
+						<div class="page-title">
+							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold"><%=l 'Software settings' %></span> / <%=l 'Edit ProxySQL data' %></h4>
+						</div>
+						<div class="heading-elements">
+							<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/software_setting"><%=l 'Cancel' %><b><i class="icon-x"></i></b></a>
+						</div>
+					</div>
+				</div>
+				<!-- /page header -->
+
+				<!-- content -->
+				<div class="content">
+					% unless ( $admin_version ) {
+					<div class="alert alert-danger alert-styled-right alert-bordered">
+						<h4 class="text-semibold">Connection error!</h4>
+						Can't connect to the ProxySQL server.<br>
+						Please set it the...
+					</div>
+					% }
+					<div class="panel panel-flat">
+						<div class="panel-heading">
+							<h5 class="panel-title"><%=l 'ProxySQL data' %></h5>
+						</div>
+						<div class="panel-body">
+							<form action="/software_setting/proxysql/edit" method="post">
+								<div class="row">
+									<div class="col-xs-3">
+										<div class="form-group<%= ( validation->error('host') ) ? ' has-error' : '' %>">
+											<label class="control-label text-semibold"><%= l 'ProxySQL host:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" placeholder="<%= $config->{database}{host} %>" type="text" name="host" value="<%= ( param('host') ) ? param('host') : $config->{database}{host} %>">
+											% if (my $err = validation->error('host')) {
+											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
+											% }
+											% unless (my $err = validation->error('host')) {
+											<span class="help-block"><%=l 'example: 172.17.0.7' %></span>
+											% }
+										</div>
+									</div>
+									<div class="col-xs-3">
+										<div class="form-group<%= ( validation->error('port') ) ? ' has-error' : '' %>">
+											<label class="control-label text-semibold"><%= l 'ProxySQL port:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" placeholder="<%= $config->{database}{port} %>" type="text" name="port" value="<%= ( param('port') ) ? param('port') : $config->{database}{port} %>">
+											% if (my $err = validation->error('port')) {
+											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
+											% }
+											% unless (my $err = validation->error('port')) {
+											<span class="help-block"><%=l 'example: 6032' %></span>
+											% }
+										</div>
+									</div>									
+								</div>
+								<!-- .row -->
+								<div class="row">
+									<div class="col-xs-3">
+										<div class="form-group<%= ( validation->error('username') ) ? ' has-error' : '' %>">
+											<label class="control-label text-semibold"><%= l 'ProxySQL user:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" placeholder="<%= $config->{database}{user} %>" type="text" name="username" value="<%= ( param('username') ) ? param('username') : $config->{database}{user} %>">
+											% if (my $err = validation->error('username')) {
+											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
+											% }
+										</div>
+									</div>
+								<!-- .row -->
+								<div class="row">
+									<div class="col-xs-3">
+										<div class="form-group<%= ( validation->error('password') ) ? ' has-error' : '' %>">
+											<label class="control-label text-semibold"><%= l 'ProxySQL password:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" placeholder="<%= $config->{database}{pass} %>" type="text" name="password" value="<%= ( param('password') ) ? param('password') : $config->{database}{pass} %>">
+											% if (my $err = validation->error('password')) {
+											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
+											% }
+										</div>
+									</div>
+									<div class="col-xs-3">
+										<div class="form-group<%= ( validation->error('password_again') ) ? ' has-error' : '' %>">
+											<label class="control-label text-semibold"><%= l 'ProxySQL password again:' %> <span class="text-danger">*</span></label>
+											<input class="form-control" placeholder="<%= $config->{database}{pass} %>" type="text" name="password_again" value="<%= ( param('password_again') ) ? param('password_again') : $config->{database}{pass} %>">
+											% if (my $err = validation->error('password_again')) {
+											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
+											% }
+										</div>
+									</div>
+								</div>
+								<!-- .row -->
+								<button class="btn btn-primary btn-labeled btn-labeled-right pull-right legitRipple" type="submit">
+									<%=l 'Save' %>
+									<b><i class="icon-arrow-right14"></i></b>
+								</button>
+							</form>
+						</div>
+						<!-- .panel-body -->
+					</div>
+					<!-- .panel -->
+					
+				</div>
+				<!-- .content -->

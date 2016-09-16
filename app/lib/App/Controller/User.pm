@@ -1,9 +1,9 @@
-package App::Controller::Users;
+package App::Controller::User;
 use Mojo::Base 'App::Controller';
 
 sub list {	
   my $self = shift;
-	$self->stash( 'mysql_users' => $self->model('users')->mysql_users() );
+	$self->stash( 'mysql_users' => $self->model('user')->mysql_users() );
 }
 
 sub form {

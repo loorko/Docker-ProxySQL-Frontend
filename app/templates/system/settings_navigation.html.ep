@@ -1,8 +1,8 @@
 					<div class="sidebar-user-material">
 						<div class="category-content">
 							<div class="sidebar-user-material-content">
-								<h6><%= $config->{company_name} %></h6>
-								<span class="text-size-small"><%= $config->{company_address} %></span>
+								<h6><%= $config->{company}{name} %></h6>
+								<span class="text-size-small"><%= $config->{company}{address} %></span>
 							</div>
 														
 							<div class="sidebar-user-material-menu">
@@ -14,8 +14,8 @@
 						
 						<div id="settings-nav" class="navigation-wrapper collapse" aria-expanded="false" style="height: 1px;">
 							<ul class="navigation">
-								<li><a href="#" class="legitRipple"><i class="icon-cog5"></i> <span><%= l 'Company settings' %></span></a></li>
-								<li><a href="#" class="legitRipple"><i class="icon-cogs"></i> <span><%= l 'Software settings' %></span></a></li>
+								<li><a href="#" class="legitRipple"><i class="icon-cog5"></i> <span><%= l 'Global settings' %></span></a></li>
+								<li><a href="/software_setting" class="legitRipple"><i class="icon-cogs"></i> <span><%= l 'Software settings' %></span></a></li>
 							</ul>
 						</div>
 					</div>

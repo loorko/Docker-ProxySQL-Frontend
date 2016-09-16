@@ -1,4 +1,4 @@
-package App::Model::Users;
+package App::Model::User;
 use Mojo::Base -base;
 
 has 'mysql';
