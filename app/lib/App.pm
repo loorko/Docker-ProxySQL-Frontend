@@ -5,8 +5,6 @@ use Mojo::mysql;
 use App::Model;
 use App::Controller;
 
-my $VERSION = '0.0.1';
-
 sub startup {
   my $self = shift;
   $self->setup_plugin;
@@ -14,7 +12,6 @@ sub startup {
   $self->setup_model;
   $self->controller_class('App::Controller');
   $self->setup_routing;
-  $self->setup_hooks;
 }
 
 sub setup_plugin {
@@ -45,24 +42,6 @@ sub setup_helper {
   });
 }
 
-sub setup_hooks {
-    my ($self) = @_;
-    $self->hook(before_dispatch => sub {
-            my $c = shift;
-            # As "defaults" values are not deep-copied, setting a hashref there
-            # would just copy that hashref and stash modifications would actually
-            # modify the defaults.
-            $c->stash(info  => []);
-            $c->stash(error => []);
-
-            # Debug request logging
-            my $req    = $c->req;
-            my $method = $req->method;
-            my $path   = $req->url->path->to_abs_string;
-            my $params = $req->params->to_string;
-            print STDERR "REQ  : $method $path [$params]\n";
-        });
-}
 sub setup_routing {
   my $self = shift;
   my $r = $self->routes;
