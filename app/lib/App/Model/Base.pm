@@ -1,9 +1,6 @@
 package App::Model::Base;
 use Mojo::Base -base;
 
-has 'proxy_db';
-has 'app_db';
-
 sub menu {
   my $self = shift;
   my $menu;
@@ -19,14 +16,18 @@ sub menu {
 }
 
 sub proxysql_connection {
-	shift->app_db->db->query('SELECT * FROM proxysql_connection')->hash;
+	my $self = shift;
+	my $db =  App::DB->new()->app_db->db;
+  my $result = $db->query('SELECT * FROM proxysql_connection')->hash;
+  $db->disconnect;
+  return $result;
 }
 
 sub company_data {
-	shift->app_db->db->query('SELECT * FROM company_data')->hash;
-}
-
-sub admin_version {
-	shift->proxy_db->db->query('SELECT variable_value FROM global_variables WHERE variable_name = "admin-version"')->hash->{variable_value};
+	my $self = shift;
+	my $db =  App::DB->new()->app_db->db;
+  my $result = $db->query('SELECT * FROM company_data')->hash;
+  $db->disconnect;
+  return $result;
 }
 1;

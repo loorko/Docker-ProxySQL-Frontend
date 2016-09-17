@@ -7,7 +7,7 @@ CREATE TABLE proxysql_connection (
     pass TEXT NOT NULL );
 
 INSERT INTO proxysql_connection (id, host, port, user, pass)
-VALUES (1, '172.17.0.7', '6032', 'admin', 'admin');
+VALUES (1, '178.17.0.7', '6032', 'admind', 'admin');
 
 CREATE TABLE company_data (
     id      INT PRIMARY KEY NOT NULL,

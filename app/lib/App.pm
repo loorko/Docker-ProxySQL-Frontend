@@ -5,6 +5,7 @@ use Mojo::SQLite;
 use Mojo::mysql;
 use App::Model;
 use App::Controller;
+use App::DB;
 use Try::Tiny;
 use Net::Ping;
 use Data::Dumper;
@@ -35,46 +36,28 @@ sub setup_init {
 
 sub setup_model {
   my $self = shift;
-  my $model = App::Model->new( proxy_db => $self->proxy_db, app_db => $self->app_db );
+  my $model = App::Model->new();
   $self->helper(model => sub { $model->model($_[1]) });
 }
 
 sub setup_helper {
   my $self = shift;
-
-  $self->helper( app_db => sub {
-    my $app_database_name = $self->config->{app_database_name};
-    state $app_db = Mojo::SQLite->new("sqlite:$app_database_name");
-  });
-  $self->helper( proxy_db => sub {
-    my $proxysql_connection = $self->app_db->db->query('SELECT * FROM proxysql_connection')->hash;
-    say Dumper( $proxysql_connection );
-    
-    my $host = $proxysql_connection->{host};
-    my $port = $proxysql_connection->{port};
-    my $user = $proxysql_connection->{user};
-    my $pass = $proxysql_connection->{pass};
-    
-    state $proxy_db = Mojo::mysql->new();
-    $proxy_db->dsn("dbi:mysql:host=$host;port=$port");
-    $proxy_db->username($user);
-    $proxy_db->password($pass);
-  });
 }
 
 sub setup_hooks {
   my ($self) = @_;
   $self->hook( before_dispatch => sub {
     my $c = shift;
-
+    say 'hook';
     my $proxysql_connection = $self->model('base')->proxysql_connection();
     my $p = Net::Ping->new();
        $p->port_number($proxysql_connection->{port});
     
     # Host is aliven
-    if( $p->ping($proxysql_connection->{host}, 3) ){
+    if( $p->ping($proxysql_connection->{host}, 3 ) ){
       try {
-        $c->stash( 'admin_version' => $self->model('base')->admin_version() );
+        my $check_proxysql_connection = App::DB->new()->check_proxysql_connection();
+        $c->stash( 'admin_version' => $check_proxysql_connection );
       }
       catch {
         $c->stash( 'admin_version' => undef );
