@@ -1,14 +1,18 @@
 package App;
 
 use Mojo::Base 'Mojolicious';
+use Mojo::SQLite;
 use Mojo::mysql;
 use App::Model;
 use App::Controller;
 use Try::Tiny;
+use Net::Ping;
+use Data::Dumper;
 
 sub startup {
   my $self = shift;
   $self->setup_plugin;
+  $self->setup_init;
   $self->setup_helper;
   $self->setup_model;
   $self->controller_class('App::Controller');
@@ -22,41 +26,79 @@ sub setup_plugin {
   $self->plugin('I18N' => { default => $self->config->{default_language} });
 }
 
+sub setup_init {
+  my $self = shift;
+  my $path = $self->home->rel_file('migrations/app.sql');
+  my $app_database_name = $self->config->{app_database_name};
+  Mojo::SQLite->new("sqlite:$app_database_name")->migrations->from_file($path)->migrate;
+};
+
 sub setup_model {
   my $self = shift;
-  my $model = App::Model->new( mysql => $self->mysql );
+  my $model = App::Model->new( proxy_db => $self->proxy_db, app_db => $self->app_db );
   $self->helper(model => sub { $model->model($_[1]) });
 }
 
 sub setup_helper {
   my $self = shift;
-  
-  $self->helper( mysql => sub {
-    my $host = $self->config->{database}{host};
-    my $port = $self->config->{database}{port};
-    my $user = $self->config->{database}{user};
-    my $pass = $self->config->{database}{pass};
+
+  $self->helper( app_db => sub {
+    say 'helper: app_db';
+    my $app_database_name = $self->config->{app_database_name};
+    state $app_db = Mojo::SQLite->new("sqlite:$app_database_name");
+  });
+  $self->helper( proxy_db => sub {
+    say 'helper: proxy_db';
+    my $proxysql_connection = $self->app_db->db->query('SELECT * FROM proxysql_connection')->hash;
+    say Dumper( $proxysql_connection );
     
-    state $mysql = Mojo::mysql->new;
-    $mysql->dsn("dbi:mysql:host=$host;port=$port");
-    $mysql->username($user);
-    $mysql->password($pass);
+    my $host = $proxysql_connection->{host};
+    my $port = $proxysql_connection->{port};
+    my $user = $proxysql_connection->{user};
+    my $pass = $proxysql_connection->{pass};
+    
+    state $proxy_db = Mojo::mysql->new();
+    $proxy_db->dsn("dbi:mysql:host=$host;port=$port");
+    $proxy_db->username($user);
+    $proxy_db->password($pass);
   });
 }
 
 sub setup_hooks {
   my ($self) = @_;
-  $self->hook(before_dispatch => sub {
+  $self->hook( before_dispatch => sub {
     my $c = shift;
-    try {
-      $c->stash( 'admin_version' => $self->model('base')->admin_version() );
+    say 'hook';
+
+    my $proxysql_connection = $self->model('base')->proxysql_connection();
+    my $p = Net::Ping->new();
+       $p->port_number($proxysql_connection->{port});
+    
+    # Host is aliven
+    if( $p->ping($proxysql_connection->{host}, 3) ){
+      say "Host is aliven";
+      try {
+        say 'try';
+        $c->stash( 'admin_version' => $self->model('base')->proxy_db() );
+      }
+      catch {
+        $c->stash( 'admin_version' => undef );
+        if( $c->req->url->path->to_abs_string ne '/software_setting/proxysql/edit' ){
+          $c->redirect_to('/software_setting/proxysql/edit');
+        }
+      };
     }
-    catch {
+    else{
+      say "Host dead";
       $c->stash( 'admin_version' => undef );
       if( $c->req->url->path->to_abs_string ne '/software_setting/proxysql/edit' ){
         $c->redirect_to('/software_setting/proxysql/edit');
       }
-    };
+    }
+    $p->close();
+    
+    $c->stash( 'proxysql_connection' => $proxysql_connection );
+    $c->stash( 'company_data' => $self->model('base')->company_data() );
     $c->stash( 'menu' => $self->model('base')->menu() );
   });
 };

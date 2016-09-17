@@ -1,15 +1,15 @@
 package App::Model::Main;
 use Mojo::Base -base;
 
-has 'mysql';
+has 'proxy_db';
 
 sub mysql_servers {
-  shift->mysql->db->query('SELECT * FROM mysql_servers')->hashes;
+  shift->proxy_db->db->query('SELECT * FROM mysql_servers')->hashes;
 }
 
 #sub mysql_servers {	
 	#my $self = shift;
-	#my $db = $self->mysql->db;
+	#my $db = $self->proxy_db->db;
   #my $results = $db->query('SELECT * FROM mysql_servers;')->hashes;
 	#return $results;
 #}

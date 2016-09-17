@@ -34,7 +34,7 @@
 									<div class="col-xs-3">
 										<div class="form-group<%= ( validation->error('host') ) ? ' has-error' : '' %>">
 											<label class="control-label text-semibold"><%= l 'ProxySQL host:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" placeholder="<%= $config->{database}{host} %>" type="text" name="host" value="<%= ( param('host') ) ? param('host') : $config->{database}{host} %>">
+											<input class="form-control" placeholder="<%= $proxysql_connection->{host} %>" type="text" name="host" value="<%= ( param('host') ) ? param('host') : $proxysql_connection->{host} %>">
 											% if (my $err = validation->error('host')) {
 											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
 											% }
@@ -46,7 +46,7 @@
 									<div class="col-xs-3">
 										<div class="form-group<%= ( validation->error('port') ) ? ' has-error' : '' %>">
 											<label class="control-label text-semibold"><%= l 'ProxySQL port:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" placeholder="<%= $config->{database}{port} %>" type="text" name="port" value="<%= ( param('port') ) ? param('port') : $config->{database}{port} %>">
+											<input class="form-control" placeholder="<%= $proxysql_connection->{port} %>" type="text" name="port" value="<%= ( param('port') ) ? param('port') : $proxysql_connection->{port} %>">
 											% if (my $err = validation->error('port')) {
 											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
 											% }
@@ -61,7 +61,7 @@
 									<div class="col-xs-3">
 										<div class="form-group<%= ( validation->error('username') ) ? ' has-error' : '' %>">
 											<label class="control-label text-semibold"><%= l 'ProxySQL user:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" placeholder="<%= $config->{database}{user} %>" type="text" name="username" value="<%= ( param('username') ) ? param('username') : $config->{database}{user} %>">
+											<input class="form-control" placeholder="<%= $proxysql_connection->{user} %>" type="text" name="username" value="<%= ( param('username') ) ? param('username') : $proxysql_connection->{user} %>">
 											% if (my $err = validation->error('username')) {
 											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
 											% }
@@ -72,7 +72,7 @@
 									<div class="col-xs-3">
 										<div class="form-group<%= ( validation->error('password') ) ? ' has-error' : '' %>">
 											<label class="control-label text-semibold"><%= l 'ProxySQL password:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" placeholder="<%= $config->{database}{pass} %>" type="text" name="password" value="<%= ( param('password') ) ? param('password') : $config->{database}{pass} %>">
+											<input class="form-control" placeholder="<%= $proxysql_connection->{pass} %>" type="text" name="password" value="<%= ( param('password') ) ? param('password') : $proxysql_connection->{pass} %>">
 											% if (my $err = validation->error('password')) {
 											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
 											% }
@@ -81,7 +81,7 @@
 									<div class="col-xs-3">
 										<div class="form-group<%= ( validation->error('password_again') ) ? ' has-error' : '' %>">
 											<label class="control-label text-semibold"><%= l 'ProxySQL password again:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" placeholder="<%= $config->{database}{pass} %>" type="text" name="password_again" value="<%= ( param('password_again') ) ? param('password_again') : $config->{database}{pass} %>">
+											<input class="form-control" placeholder="<%= $proxysql_connection->{pass} %>" type="text" name="password_again" value="<%= ( param('password_again') ) ? param('password_again') : $proxysql_connection->{pass} %>">
 											% if (my $err = validation->error('password_again')) {
 											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
 											% }

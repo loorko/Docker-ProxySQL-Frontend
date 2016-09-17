@@ -1,9 +1,9 @@
 package App::Model::User;
 use Mojo::Base -base;
 
-has 'mysql';
+has 'proxy_db';
 
 sub mysql_users {
-  shift->mysql->db->query('SELECT * FROM mysql_users')->hashes;
+  shift->proxy_db->db->query('SELECT * FROM mysql_users')->hashes;
 }
 1;
