@@ -39,7 +39,22 @@
 									</tr>
 								</thead>
 								<tbody>
-
+									% for my $server ( @{$mysql_servers} ) {
+									<tr>
+										<td>
+											<span class="label label-success"><%= $server->{status} %></span>
+										</td>
+										<td><%= $server->{hostgroup_id} %></td>
+										<td><%= $server->{hostname} %></td>
+										<td><%= $server->{port} %></td>
+										<td><%= $server->{weight} %></td>
+										<td><%= $server->{compression} %></td>
+										<td><%= $server->{max_connections} %></td>
+										<td><%= $server->{max_replication_lag} %></td>
+										<td><%= $server->{use_ssl} %></td>
+										<td><%= $server->{max_latency_ms} %> ms</td>
+									</tr>
+									% }
 								</tbody>
 							</table>
 						</div>

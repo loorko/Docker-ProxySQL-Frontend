@@ -27,7 +27,6 @@ sub company_data {
 }
 
 sub admin_version {
-	say 'admin_version';
 	shift->proxy_db->db->query('SELECT variable_value FROM global_variables WHERE variable_name = "admin-version"')->hash->{variable_value};
 }
 1;

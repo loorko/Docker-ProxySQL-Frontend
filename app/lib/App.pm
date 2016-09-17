@@ -43,12 +43,10 @@ sub setup_helper {
   my $self = shift;
 
   $self->helper( app_db => sub {
-    say 'helper: app_db';
     my $app_database_name = $self->config->{app_database_name};
     state $app_db = Mojo::SQLite->new("sqlite:$app_database_name");
   });
   $self->helper( proxy_db => sub {
-    say 'helper: proxy_db';
     my $proxysql_connection = $self->app_db->db->query('SELECT * FROM proxysql_connection')->hash;
     say Dumper( $proxysql_connection );
     
@@ -68,7 +66,6 @@ sub setup_hooks {
   my ($self) = @_;
   $self->hook( before_dispatch => sub {
     my $c = shift;
-    say 'hook';
 
     my $proxysql_connection = $self->model('base')->proxysql_connection();
     my $p = Net::Ping->new();
@@ -76,10 +73,8 @@ sub setup_hooks {
     
     # Host is aliven
     if( $p->ping($proxysql_connection->{host}, 3) ){
-      say "Host is aliven";
       try {
-        say 'try';
-        $c->stash( 'admin_version' => $self->model('base')->proxy_db() );
+        $c->stash( 'admin_version' => $self->model('base')->admin_version() );
       }
       catch {
         $c->stash( 'admin_version' => undef );
@@ -89,7 +84,6 @@ sub setup_hooks {
       };
     }
     else{
-      say "Host dead";
       $c->stash( 'admin_version' => undef );
       if( $c->req->url->path->to_abs_string ne '/software_setting/proxysql/edit' ){
         $c->redirect_to('/software_setting/proxysql/edit');
