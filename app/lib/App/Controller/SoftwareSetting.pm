@@ -25,5 +25,16 @@ sub post_proxysql {
 	};
 	# username validation
 	$validation->required('username')->size(1, 50);
+
+	# password validation
+	$validation->required('password')->size(1, 50);
+	
+	my $data = { id 			=> 1,
+							 host 		=> $self->param('host'),
+							 port 		=> $self->param('port'),
+							 username => $self->param('username'),
+							 password => $self->param('password')};
+	
+	$self->model('softwaresetting')->update_proxysql_connection($data);
 }
 1;

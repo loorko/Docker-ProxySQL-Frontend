@@ -1,6 +1,18 @@
 -- 1 up
-create table proxysql_connection ( host text, port text, user text, pass text );
-insert into proxysql_connection values ('172.17.0.7', '6032', 'admin', 'admin');
+CREATE TABLE proxysql_connection (
+    id   INT PRIMARY KEY NOT NULL,
+    host TEXT NOT NULL,
+    port TEXT NOT NULL,
+    user TEXT NOT NULL,
+    pass TEXT NOT NULL );
 
-create table company_data ( name text, address text );
-insert into company_data values ('SysOwn', 'Santa Ana, CA');
+INSERT INTO proxysql_connection (id, host, port, user, pass)
+VALUES (1, '172.17.0.7', '6032', 'admin', 'admin');
+
+CREATE TABLE company_data (
+    id      INT PRIMARY KEY NOT NULL,
+    name    TEXT NOT NULL,
+    address TEXT NOT NULL );
+
+INSERT INTO company_data (id, name, address)
+VALUES (1, 'SysOwn', 'Santa Ana, CA');
