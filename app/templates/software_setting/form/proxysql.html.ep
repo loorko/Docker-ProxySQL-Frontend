@@ -9,7 +9,7 @@
 							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold"><%=l 'Software settings' %></span> / <%=l 'Edit ProxySQL data' %></h4>
 						</div>
 						<div class="heading-elements">
-							<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/software_setting"><%=l 'Cancel' %><b><i class="icon-x"></i></b></a>
+							<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple<%= ( $admin_version ) ? '' : ' disabled' %>" href="/software_setting"><%=l 'Cancel' %><b><i class="icon-x"></i></b></a>
 						</div>
 					</div>
 				</div>
@@ -67,23 +67,11 @@
 											% }
 										</div>
 									</div>
-								</div>
-								<!-- .row -->
-								<div class="row">
 									<div class="col-xs-3">
 										<div class="form-group<%= ( validation->error('password') ) ? ' has-error' : '' %>">
 											<label class="control-label text-semibold"><%= l 'ProxySQL password:' %> <span class="text-danger">*</span></label>
 											<input class="form-control" placeholder="<%= $proxysql_connection->{pass} %>" type="text" name="password" value="<%= ( param('password') ) ? param('password') : $proxysql_connection->{pass} %>">
 											% if (my $err = validation->error('password')) {
-											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
-											% }
-										</div>
-									</div>
-									<div class="col-xs-3">
-										<div class="form-group<%= ( validation->error('password_again') ) ? ' has-error' : '' %>">
-											<label class="control-label text-semibold"><%= l 'ProxySQL password again:' %> <span class="text-danger">*</span></label>
-											<input class="form-control" placeholder="<%= $proxysql_connection->{pass} %>" type="text" name="password_again" value="<%= ( param('password_again') ) ? param('password_again') : $proxysql_connection->{pass} %>">
-											% if (my $err = validation->error('password_again')) {
 											<span class="help-block"><%=l 'form_error_'.$err->[0] %></span>
 											% }
 										</div>

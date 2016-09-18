@@ -26,7 +26,7 @@ sub setup_plugin {
 sub setup_init {
   my $self = shift;
   my $path = $self->home->rel_file('migrations/app.sql');
-  Mojo::SQLite->new("sqlite:app.db")->migrations->from_file($path)->migrate;
+  App::DB->new()->app_db->migrations->from_file($path)->migrate;
 };
 
 sub setup_model {

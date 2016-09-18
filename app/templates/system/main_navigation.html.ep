@@ -2,7 +2,7 @@
 						<div class="category-content no-padding">
 							<ul class="navigation navigation-main navigation-accordion">
 							% for my $loop ( @{$menu} ) {
-								<li <%= ( $loop->{action} and ( $controller eq $loop->{action} ) ) ? ' class=active' : '' %> >
+								<li class="<%= ( $loop->{action} and ( $controller eq $loop->{action} ) ) ? 'active' : '' %><%= ( $admin_version ) ? '' : ' disabled' %>" >
 									<a href="<%= $loop->{action} %>" <%= ( $loop->{submenu} ) ? 'class=has-ul' : '' %>>
 										<i class="fa fa-<%= $loop->{icon} %>"></i>
 										<span><%= l $loop->{name} %></span>

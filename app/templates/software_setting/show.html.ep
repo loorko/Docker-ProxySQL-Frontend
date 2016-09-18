@@ -49,7 +49,7 @@
 										</div>
 									</div>
 									<!-- .row -->
-									<a class="btn btn-primary btn-labeled btn-labeled-right pull-right legitRipple" href="/software_setting/company/edit">
+									<a class="disabled btn btn-primary btn-labeled btn-labeled-right pull-right legitRipple" href="/software_setting/company/edit">
 										<%=l 'Edit' %>
 										<b><i class="icon-pencil7"></i></b>
 									</a>

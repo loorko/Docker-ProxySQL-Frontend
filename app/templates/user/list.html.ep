@@ -12,7 +12,7 @@
 							</h4>
 						</div>
 						<div class="heading-elements">
-							<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/user"><%=l 'New user' %><b><i class="icon-plus-circle2"></i></b></a>
+							<a class="disabled btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple" href="/user"><%=l 'New user' %><b><i class="icon-plus-circle2"></i></b></a>
 						</div>
 					</div>
 				</div>
@@ -73,8 +73,8 @@
 									<td><%= $user->{max_connections} %></td>
 									<td class="text-right">
 										<ul class="icons-list">
-											<li><a href="/user/1/edit"><i class="icon-pencil7"></i></a></li>
-											<li><a href="/user/1/delete"><i class="icon-trash"></i></a></li>
+											<li><a href="#"><i class="icon-pencil7"></i></a></li>
+											<li><a href="#"><i class="icon-trash"></i></a></li>
 										</ul>
 									</td>
 								</tr>
