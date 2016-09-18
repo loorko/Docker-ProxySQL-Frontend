@@ -1,14 +1,10 @@
 package App;
 
 use Mojo::Base 'Mojolicious';
-use Mojo::SQLite;
-use Mojo::mysql;
 use App::Model;
 use App::Controller;
 use App::DB;
 use Try::Tiny;
-use Net::Ping;
-use Data::Dumper;
 
 sub startup {
   my $self = shift;
@@ -30,8 +26,7 @@ sub setup_plugin {
 sub setup_init {
   my $self = shift;
   my $path = $self->home->rel_file('migrations/app.sql');
-  my $app_database_name = $self->config->{app_database_name};
-  Mojo::SQLite->new("sqlite:$app_database_name")->migrations->from_file($path)->migrate;
+  Mojo::SQLite->new("sqlite:app.db")->migrations->from_file($path)->migrate;
 };
 
 sub setup_model {
@@ -48,33 +43,6 @@ sub setup_hooks {
   my ($self) = @_;
   $self->hook( before_dispatch => sub {
     my $c = shift;
-    say 'hook';
-    my $proxysql_connection = $self->model('base')->proxysql_connection();
-    my $p = Net::Ping->new();
-       $p->port_number($proxysql_connection->{port});
-    
-    # Host is aliven
-    if( $p->ping($proxysql_connection->{host}, 3 ) ){
-      try {
-        my $check_proxysql_connection = App::DB->new()->check_proxysql_connection();
-        $c->stash( 'admin_version' => $check_proxysql_connection );
-      }
-      catch {
-        $c->stash( 'admin_version' => undef );
-        if( $c->req->url->path->to_abs_string ne '/software_setting/proxysql/edit' ){
-          $c->redirect_to('/software_setting/proxysql/edit');
-        }
-      };
-    }
-    else{
-      $c->stash( 'admin_version' => undef );
-      if( $c->req->url->path->to_abs_string ne '/software_setting/proxysql/edit' ){
-        $c->redirect_to('/software_setting/proxysql/edit');
-      }
-    }
-    $p->close();
-    
-    $c->stash( 'proxysql_connection' => $proxysql_connection );
     $c->stash( 'company_data' => $self->model('base')->company_data() );
     $c->stash( 'menu' => $self->model('base')->menu() );
   });

@@ -11,6 +11,7 @@ RUN curl -L http://cpanmin.us | perl - Mojolicious::Plugin::Config
 RUN curl -L http://cpanmin.us | perl - Mojolicious::Plugin::I18N
 RUN curl -L http://cpanmin.us | perl - DBI
 RUN curl -L http://cpanmin.us | perl - Mojo::mysql
+RUN curl -L http://cpanmin.us | perl - Mojo::SQLite
 RUN curl -L http://cpanmin.us | perl - Try::Tiny
 RUN curl -L http://cpanmin.us | perl - URI::Escape
 
