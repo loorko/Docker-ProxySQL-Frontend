@@ -53,46 +53,68 @@ sub setup_routing {
   my $r = $self->routes;
 
   $r = $r->namespaces(['App::Controller']);
-  
+
+  $r->add_condition(
+    check_proxysql_connection => sub {
+      my ($route, $c, $captures, $arg) = @_;
+      my $res = App::DB->new()->check_proxysql_connection();
+      $c->stash( 'admin_version' => $res );
+      unless ( $res ){
+        if( $route->route->to_string ne '/software_setting/proxysql/edit' ){
+          $c->redirect_to('/software_setting/proxysql/edit');
+          return 0;
+        };
+      };
+      return 1;
+    }
+  );
 # Start page
   $r->route('/')->via('get')
+    ->over( check_proxysql_connection => 1)
     ->to( controller  => 'main',
           action      => 'index' );
 
 # Software settings
   $r->route('/software_setting')->via('get')
+    ->over( check_proxysql_connection => 1)
     ->to( controller  => 'software_setting',
           action      => 'show',
           template    => 'software_setting/show' );
     
   $r->route('/software_setting/proxysql/edit')->via('get')
+    ->over( check_proxysql_connection => 1)
     ->to( controller  => 'software_setting',
           action      => 'get_proxysql',
           template    => 'software_setting/form/proxysql' );
   
   $r->route('/software_setting/proxysql/edit')->via('post')
+    ->over( check_proxysql_connection => 1)
     ->to( controller  => 'software_setting',
           action      => 'post_proxysql',
           template    => 'software_setting/form/proxysql' );
     
 # Dashboard
   $r->route('/main')->via('get')
+    ->over( check_proxysql_connection => 1)
     ->to( controller  => 'main',
           action      => 'main',
           template    => 'main/main' );
 
 # Users
   $r->route('/users')->via('get')
+    ->over( check_proxysql_connection => 1)
     ->to( controller  => 'user',
           action      => 'list',
           template    => 'user/list' );
     
   $r->route('/user')->via('get')
+    ->over( check_proxysql_connection => 1)
     ->to( controller  => 'user',
           action      => 'form',
           template    => 'user/form' );
 
   $r->route('/user')->via('post')
+    ->over( check_proxysql_connection => 1)
     ->to( controller  => 'user',
           action      => 'create',
           template    => 'user/form' );
