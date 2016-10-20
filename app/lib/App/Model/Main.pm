@@ -1,5 +1,5 @@
 package App::Model::Main;
-use Mojo::Base -base;
+use Mojo::Base 'MojoX::Model';
 
 sub mysql_servers {	
   my $self = shift;

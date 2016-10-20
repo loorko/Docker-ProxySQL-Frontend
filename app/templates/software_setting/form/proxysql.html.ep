@@ -9,7 +9,7 @@
 							<h4><i class="icon-arrow-left52 position-left"></i> <span class="text-semibold"><%=l 'Software settings' %></span> / <%=l 'Edit ProxySQL data' %></h4>
 						</div>
 						<div class="heading-elements">
-							<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple<%= ( $admin_version ) ? '' : ' disabled' %>" href="/software_setting"><%=l 'Cancel' %><b><i class="icon-x"></i></b></a>
+							<a class="btn btn-labeled btn-labeled-right bg-blue heading-btn legitRipple<%= ( $proxysql_version ) ? '' : ' disabled' %>" href="/software_setting"><%=l 'Cancel' %><b><i class="icon-x"></i></b></a>
 						</div>
 					</div>
 				</div>
@@ -17,7 +17,7 @@
 
 				<!-- content -->
 				<div class="content">
-					% unless ( $admin_version ) {
+					% unless ( $proxysql_version ) {
 					<div class="alert alert-danger alert-styled-right alert-bordered">
 						<h4 class="text-semibold">Connection error!</h4>
 						Can't connect to the ProxySQL server.<br>

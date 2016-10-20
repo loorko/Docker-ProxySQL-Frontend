@@ -39,7 +39,7 @@
 	<div class="navbar navbar-inverse navbar-fixed-top bg-indigo">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="/main">
-				<%= $config->{app_name} %> / <%= $admin_version %>
+				<%= $config->{app_name} %> / <%= $proxysql_version %>
 			</a>
 			<div class="navbar-collapse collapse" id="navbar-mobile">
 				<ul class="nav navbar-nav">

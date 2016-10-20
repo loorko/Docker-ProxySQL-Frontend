@@ -1,5 +1,5 @@
 package App::Model::SoftwareSetting;
-use Mojo::Base -base;
+use Mojo::Base 'MojoX::Model';
 
 sub update_proxysql_connection {
   my ($self, $data) = @_;

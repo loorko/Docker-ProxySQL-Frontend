@@ -8,7 +8,9 @@ sub index {
 
 sub main {
   my $self = shift;
-  $self->stash( 'mysql_servers' => $self->model('main')->mysql_servers() );
+  my $mysql_servers;
+  $mysql_servers = $self->model('main')->mysql_servers();
+  $self->stash( 'mysql_servers' => $mysql_servers );
 }
 
 1;

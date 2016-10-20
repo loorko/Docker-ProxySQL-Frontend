@@ -1,8 +1,8 @@
 					<div class="sidebar-user-material">
 						<div class="category-content">
 							<div class="sidebar-user-material-content">
-								<h6><%= $company_data->{name} %></h6>
-								<span class="text-size-small"><%= $company_data->{address} %></span>
+								<h6><%= $company->{name} %></h6>
+								<span class="text-size-small"><%= $company->{address} %></span>
 							</div>
 							<div class="sidebar-user-material-menu">
 								<a data-toggle="collapse" href="#settings-nav" class="legitRipple collapsed" aria-expanded="false">
@@ -13,8 +13,7 @@
 						
 						<div id="settings-nav" class="navigation-wrapper collapse" aria-expanded="false" style="height: 1px;">
 							<ul class="navigation">
-								<li class="<%= ( $admin_version ) ? '' : 'disabled' %>"><a href="#" class="legitRipple"><i class="icon-cog5"></i> <span><%= l 'Global settings' %></span></a></li>
-								<li class="<%= ( $admin_version ) ? '' : 'disabled' %>"><a href="/software_setting" class="legitRipple"><i class="icon-cogs"></i> <span><%= l 'Software settings' %></span></a></li>
+								<li class="<%= ( $proxysql_version ) ? '' : 'disabled' %>"><a href="/software_setting" class="legitRipple"><i class="icon-cogs"></i> <span><%= l 'Software settings' %></span></a></li>
 							</ul>
 						</div>
 					</div>

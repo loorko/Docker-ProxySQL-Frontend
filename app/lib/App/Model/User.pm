@@ -1,5 +1,5 @@
 package App::Model::User;
-use Mojo::Base -base;
+use Mojo::Base 'MojoX::Model';
 
 sub mysql_users {
   my $self = shift;
