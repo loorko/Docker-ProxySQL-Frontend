@@ -6,6 +6,7 @@ Docker-ProxySQL-Frontend
 ## Install
 Prerequisities
  - Docker
+ - https://github.com/mszel42/Docker-Ansible-MHA-ProxySQL
 
 ## Build the docker image
 ```
